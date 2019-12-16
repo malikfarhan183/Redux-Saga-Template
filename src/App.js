@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Button from './containers/Button';
+import NewsItem from './containers/NewsItem'
+import Loading from './containers/Loading'
+import { connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+let App = () => (
+  <div>
+     <Button />
+     <Loading />
+     <NewsItem />
+  </div>
+);
+const mapStateToProps = state => {
+  console.log("MAP STATE TO PROPS in HOME PAGE" , state); // IN {state.places.places} places is a reducer and the last places is the variable in stores's State
+  return{
+    // places : state.places.places,
+    // selectedPlace : state.places.selectedPlace
+  };
+};
+export default connect(mapStateToProps, null)(App);
